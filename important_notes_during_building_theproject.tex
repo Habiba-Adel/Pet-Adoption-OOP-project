@@ -1,0 +1,90 @@
+-----  this will be file for putting all the notes i learned during i coding and designing this system to learn new things:
+
+1- the methods related to the behavior of the object put it in the class itself like if we have pet class we put inside it 
+methods like eat , sleep , running and so on any method describe its behavior put it inside it and if there is any other
+methods that related to managing this class objects make another class related to that like pet services and put inside it 
+methods like add pet , delete pet anything related to managing and thats why? cause it is apply the SINGLE RESPONSABILITY PRINCIPLE 
+and it it one of the popular SOLID design principles which will making changing the code and maintain it very easy to make 
+
+
+2- if you want to generate id you can use this :
+this.id = UUID.randomUUID().toString();
+and thats cause this benefits :
+--> UUIDs are random and very difficult to predict, which improves security for external-facing systems like APIs.
+--> Many professional applications, APIs, and databases use UUIDs for entities that need unique IDs
+Examples: database primary keys, API tokens, session identifiers.
+--> A UUID (Universally Unique Identifier) is designed to be unique across all systems and time.
+Even if you have multiple servers or databases, a UUID collision is extremely unlikely.
+This is stronger than a static counter, which is only unique within a single runtime/session.
+
+
+3- methods that needing to take data from the user input to make its work like register it is more professional and better design to 
+make the method make only its logic as a register only and give it it needed data 
+
+
+4- there is a question about when we define a custom exceptions define it as checked or unchecked ?
+what i reach to it until now is that if the exception the caller can recover this exception by making the user enter the data again 
+or make the system taking different approach so in this case we use --> checked exceptions
+but if the caller can not recover it casue it is developer code mistake or environment mistake so in this case define it as 
+unchecked exceptions 
+👉 If the problem is due to user input or expected business logic → checked.
+👉 If the problem is due to programmer error, system misconfiguration, or environment → unchecked.
+
+
+5- if i am confused about if there is specific attribut define it as strning or as enum in this case we need to ask ourselves question
+if the number of values for this attribute is limited and even if the number of values large but we can track them cause they are fixed and everyone know about them 
+(specices )in this case the enum is the best choice but if there is unlimited nad it is very open and will be may rare types and changes happened everyday in it 
+which will lead to new  types (breed) in this case the string is better 
+
+6- if there is thing maybe int he future coming new features will use the same thing and you do not know which name is the best
+naming it name define the current status or taking in your observation the future?
+the best option is to name about the present and the thing still will be flexable for the future you will just need to refactor the name 
+but the code can be used again and again 
+
+7-In professional design, entity classes like Adopter should only be responsible for holding their own data and simple behaviors (e.g., updating contact info).
+They should not be aware of how they are stored or managed in collections.
+By keeping them focused on representing the domain object, the code remains clean, easy to understand, and consistent with the Single Responsibility Principle (SRP).
+
+On the other hand, service classes like AdopterServices are responsible for managing groups of entities, enforcing rules, and handling storage (such as checking existence, adding, or deleting). 
+This separation of concerns makes the design more flexible, because if the storage method changes (e.g., from HashMap to a database), the entity classes remain untouched. 
+This layered approach is more professional, maintainable, and scalable for future growth.
+
+8-track adoption history means to add adoption to the history and display all the adoptions until now 
+track status is means to change specific status 
+
+9- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------
+                                          NEW THINGS I LEARDNED IN HEAD JAVA FIRST BOOK AND I APPLY IT IN THIS PROJECT
+1- generics
+2- using delegation to make more encapsulation from OOA&D head first book 
