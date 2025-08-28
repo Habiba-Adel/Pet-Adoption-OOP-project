@@ -5,15 +5,23 @@ public class Adopter extends User {
   //here it having the same user attributes but with just w extra things contact information and adoption history
   private ContactInfo info;
   private ArrayList<Adoption>adoptionHistory;
-
+  private Integer numOfAdoptions;
+  //this both for demograohic statical reports 
+  private int age;
+  private String location;
+  private boolean gender;//0 for man and 1 for woman
 
 
   //constructor
-  public Adopter(String name,String password,ContactInfo c)
+  public Adopter(String name,String password,ContactInfo c,int age,String location, boolean gender)
   {
     super(name, password);
     info=c;
     adoptionHistory=new ArrayList<>();
+    numOfAdoptions=0;
+    this.age=age;
+    this.location=location;
+    this.gender=gender;
   }
 
 
@@ -34,6 +42,18 @@ public void setInfo(ContactInfo info) {
 public void setAdoptionHistory(ArrayList<Adoption> adoptionHistory) {
     this.adoptionHistory = adoptionHistory;
 }
+
+public Integer getNumberOfAdoptions(){return numOfAdoptions;}
+
+public void incrementAdoptionNumber(){numOfAdoptions++;}
+
+public int getAge(){return age;}
+public void setAge(int age){this.age=age;}
+
+public String getLocation(){return location;}
+public void setLocation(String s){location=s;}
+
+public boolean getGender(){return gender;}
 
 
 
@@ -88,6 +108,13 @@ public void updateAdoptionStatus(int adoptionId, AdoptionStatus newStatus) {
           break;
       }
   }
+}
+
+
+//now we need to override the notification message to the adopter 
+public void getNotificationMessage(Notification n )
+{
+System.out.println("your request for pet "+n.getAdoption().getAdopted().getName()+ "its status is "+ n.getAdoption().getStatus());
 }
 
 }

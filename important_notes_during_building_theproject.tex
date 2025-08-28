@@ -52,8 +52,28 @@ This layered approach is more professional, maintainable, and scalable for futur
 8-track adoption history means to add adoption to the history and display all the adoptions until now 
 track status is means to change specific status 
 
-9- 
+9- when you define a queue the queue is an interface in java not concrete class so when you initilize it you can use linked list and that to 
+be free to can insert or remove from 2 sides of the list 
 
+10-in the notification part we have 2 choices the first one is we can define array of notification inside each subclass like adopter and one inside shelter
+and one inside admin and inisde the notification class we will need to check the user type cause based on the type the message information will be different
+and this way is not scalabe and it violates the OPEN/CLOSED principle cause if there is change happened in the future to add another user 
+that will lead to change notification too and that is not the best option 
+SECOND way is just to define the notification array but in the user class itself and it will inheritid for all subclasses and this will protect us from the code duplication
+and each class will handle its display message by itself 
+
+11-there is no built in pair like in c++ which will lead us in java to creating a small class will be used as a pair 
+and the second thing is that we can not define more than one public class in java cause java use the public class in its strucutre of the project 
+and when you define more than one you ruin the structure so we can put more than class related to each other in the same file but one public and the other one with nothing
+
+12- INTEGER in java is immutable and if you use it in something like hash map and want to updat eit you will can not do that 
+you will need to access the old value and make copy of it and increment this copy and then put this new copy inside the hash map
+
+13- in using lambda expressions in something like that (a, b) -> a.getValue().compareTo(b.getValue()) in sorting the order of putting
+a first or b affects in the order of sorting so here if we put a first that means we need to sort them ascending 
+but if we make b , compare to a that will make sorting descending order 
+
+14-
 
 
 
@@ -88,3 +108,4 @@ track status is means to change specific status
                                           NEW THINGS I LEARDNED IN HEAD JAVA FIRST BOOK AND I APPLY IT IN THIS PROJECT
 1- generics
 2- using delegation to make more encapsulation from OOA&D head first book 
+3- lambda expressions 

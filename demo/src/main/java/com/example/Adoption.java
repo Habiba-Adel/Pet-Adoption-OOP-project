@@ -9,12 +9,12 @@ public class Adoption {
   private AdoptionStatus status;
   private LocalDate adoptionDate;
 
-  public Adoption(int id, Pet adopted, Adopter adopter, AdoptionStatus status, LocalDate adoptionDate) {
+  public Adoption(int id, Pet adopted, Adopter adopter, AdoptionStatus status) {
     this.id = id;
     this.adopted = adopted;
     this.adopter = adopter;
     this.status = status;
-    this.adoptionDate = adoptionDate;
+    this.adoptionDate = LocalDate.now();
 }
 
 

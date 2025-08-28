@@ -47,8 +47,6 @@ public class AdopterServices {
     return false;
    }
 
-
-
    //we will seperate the update functionalities cause to make each method having just only one single task
    public static void updateAdopterContactInfo(int id, ContactInfo newInfo) throws AdopterServicesExceptions {
     Adopter adopter = allAdopters.get(id);
@@ -57,7 +55,6 @@ public class AdopterServices {
     }
     adopter.updateContactInfo(newInfo); 
 }
-
 
    public static void updateAdopterName(String old,String neww)
    {
@@ -69,6 +66,28 @@ public class AdopterServices {
     UserServices.updatePassword(name, newpass);
    }
 
-   
+   //now each adapter can request specific pet to adopt it so he will request adoption and then will need to wait until the admin approve or reject
+   public static void requestAdoption(Adoption obj ) throws AdopterServicesExceptions
+   {
+    //we will take it object directly rather than creating it from the start and if there is change happened in the attribute of the adoption class 
+    //will lead us to change here too and that is bad design so the best option is to get the object directly 
+    //now we will make the status of the obj is pending
+    if(obj==null||obj.getAdopter() == null || obj.getAdopted() == null)throw new AdopterServicesExceptions("there is wrong on the adoption request");
+    
+    obj.setStatus(AdoptionStatus.PENDING);
+    //and then add it in the queue of the pending requests
+    AdminServices.getPendingRequests().add(obj);
+    obj.getAdopter().incrementAdoptionNumber();
+
+   }
+
+   //this is for tracking the status of each adoption request 
+   public static void trackAdoptionHistory(int adopterId) throws AdopterServicesExceptions {
+    if(!allAdopters.containsKey(adopterId))
+    throw new AdopterServicesExceptions("Adopter not found.");
+    // delegate to the adopter object
+    else
+    allAdopters.get(adopterId).displayAdoptionHistory();//here we use delegation too 
+}
 
 }

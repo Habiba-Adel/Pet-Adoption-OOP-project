@@ -9,6 +9,7 @@ public class Pet {
     private Integer age;
     private HealthState state;
     private Boolean adoptionAvailable;
+    private Shelter owner;
 
     public Pet() {
         this.ID = counter++;
@@ -18,10 +19,11 @@ public class Pet {
         this.age = 0;
         this.state = HealthState.HEALTHY;
         this.adoptionAvailable=true;
+        owner=null;
     }
 
 
-    public Pet(String name, Species species, String breed, int age, HealthState state,boolean available) {
+    public Pet(String name, Species species, String breed, int age, HealthState state,boolean available,Shelter shelter) {
         this.ID = counter++;
         this.name = name;
         this.species = species;
@@ -29,6 +31,7 @@ public class Pet {
         this.age = age;
         this.state = state;
         this.adoptionAvailable=available;
+        owner=shelter;
     }
 
     //we can not making set for the id cause it is auto generated 
@@ -54,7 +57,10 @@ public class Pet {
     public boolean isAdoptionAvailable() { return adoptionAvailable; }
     public void setAdoptionAvailable(boolean adoptionAvailable) { this.adoptionAvailable = adoptionAvailable; }
 
+    public Shelter getPetShelter(){return this.owner;}
+    public void setPetShelter(Shelter s){this.owner=s;}
 
+  
     
     //we will put the only method here is the update pet profile and that cause it is deponds on the pet attributes class and if there is change happened 
     //related to the pet attribute the update will also need to be update so the best otpion to put it here to change only one class rather than chaning 2 classes 

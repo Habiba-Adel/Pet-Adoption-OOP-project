@@ -5,6 +5,8 @@ public class Shelter extends User{
 private String location;
 private ContactInfo info;
 private ArrayList<Pet>shelterPets;
+private int numberOfAdoptions;//this is the number of adoptions per shelter cause we will use it in the reporting 
+
 
 public Shelter(String name,String pass,String locaion, ContactInfo c)
 {
@@ -12,6 +14,7 @@ super(name,pass);
 this.location=locaion;
 info=c;
 shelterPets=new ArrayList<>();
+numberOfAdoptions=0;
 }
 
 public String getLocation() {
@@ -34,6 +37,12 @@ public void setLocation(String location) {
 public void setInfo(ContactInfo info) {
   this.info = info;
 }
+
+public int getNumberOfAdoptions(){return numberOfAdoptions;}
+
+public void incrementNumberOfAdoptions(){numberOfAdoptions++;}
+
+
 
 //managing the list of pets in each shelter thats can be happened byy
 //adding pet to the list
@@ -86,6 +95,12 @@ public boolean updatePet(int petId,Pet newdata)
 public void updateContactInfo(ContactInfo c)
 {
   this.info.update(c);
+}
+
+//now we need to override the notification message to the shelter 
+public void getNotificationMessage(Notification n )
+{
+System.out.println("your pet its name  "+n.getAdoption().getAdopted().getName()+ "is adopted by  "+ n.getAdoption().getAdopter().getUserName());
 }
 
 

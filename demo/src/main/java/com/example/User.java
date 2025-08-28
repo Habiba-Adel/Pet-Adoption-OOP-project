@@ -1,4 +1,5 @@
 package com.example;
+import java.util.ArrayList;
 
 public abstract class User { // i make it abstract cause we will not having an user instance it will not having any meaning
   /*
@@ -11,7 +12,7 @@ public abstract class User { // i make it abstract cause we will not having an u
    private int id; //java naming conventions making any variable except constants in camel case
    private String password ;// i need to store it hashing after taking it from the user to ensure the data security
    private String userName;
-
+   private ArrayList<Notification> myNotifications;
  
   //now lets make the constructor 
   public User(String name,String password)
@@ -19,7 +20,33 @@ public abstract class User { // i make it abstract cause we will not having an u
     userName=name;
     this.password=password;
     id=++nextId;
+    myNotifications=new ArrayList<>();
 
+  }
+
+
+  public ArrayList<Notification> getMyNotifications()
+  {
+    return myNotifications;
+  }
+
+  public void addNotification(Notification n )
+  {
+     if(n==null) throw new RuntimeException("there is wrong on the notifiaction object");
+     if(myNotifications.contains(n))
+     {
+      System.out.println("this notification is already added to your ones");
+      return ;
+     }
+     myNotifications.add(n);
+  }
+
+  public void displayAllNotifications()
+  {
+    for(Notification temp:myNotifications)
+    {
+      getNotificationMessage(temp);
+    }
   }
 
   //now putting the getters and setters to controlling the access to the data , applying the encapsulation , security , saving the data 
@@ -46,6 +73,9 @@ public void setPassword(String password) {
         this.password = password;
     }
 }
+
+//and we will make this method abstract to be inherited for each subclass and each one implement it based on its type 
+public abstract void getNotificationMessage(Notification n);
 
 
 
